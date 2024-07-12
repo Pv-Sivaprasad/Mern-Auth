@@ -1,10 +1,11 @@
 import express from 'express'
-import { test } from '../controllers/userController.js'
+import { signup,signin } from '../controllers/authController.js'
 
 const user_route = express.Router()
 
-user_route.get('/',test)
-
+user_route.get('/signup',signup)
+user_route.post('/signin',signin)
+user_route.post('/google',)
 
 
 
