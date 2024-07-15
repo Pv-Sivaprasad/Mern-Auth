@@ -20,7 +20,7 @@ import OAuth from '../components/OAuth';
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await fetch('/auth/sign-in', {
+      const res = await fetch('/api/auth/sign-in', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ import OAuth from '../components/OAuth';
         <OAuth/>
       </form>
       <div className='flex gap-3 mt-5'>
-        <p>Don't have an Account?</p>
+        <p>  New Here?</p>
         <Link to='/sign-up'>
           <span className='text-blue-600'>Sign Up</span>
         </Link>
