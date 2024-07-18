@@ -17,7 +17,7 @@ export const test=(req,res)=>{
 
 export const updateUser=async(req,res,next)=>{
 
-    console.log('reached here');
+
 if(req.user.id !== req.params.id) return next(errorHandler(401,'You can update your account from here'))
 
         try {
@@ -44,3 +44,22 @@ if(req.user.id !== req.params.id) return next(errorHandler(401,'You can update y
             next(error)
         }
 }
+
+
+//delete user 
+
+  export const  deleteUser= async(req,res,next)=>{
+
+   if(req.user.id !== req.params.id) 
+    {
+        return next(errorHandler(401,'You can delete your account from here'))
+    }
+
+    try {
+        await User.findByIdAndDelete(req.params.id)
+        res.status(200).json('User Account has been deleted successfully...')
+    } catch (error) {
+        next(error)
+    }
+
+  }

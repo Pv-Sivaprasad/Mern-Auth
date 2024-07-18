@@ -1,0 +1,8 @@
+body {
+    /* background-image: url('../assets/backgound.jpeg'); */
+    background-color: #E0F7FA; /* Light blue shade */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
