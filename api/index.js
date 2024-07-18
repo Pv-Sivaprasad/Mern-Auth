@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import userRoute from './routes/userRoute.js'
 import authRoute from './routes/authRoute.js'
+import adminRoute from './routes/adminRoute.js'
 import cookieParser from 'cookie-parser'
 dotenv.config()
 
@@ -26,9 +27,10 @@ app.listen(port,()=>{
     console.log(`http://localhost:${port}`);
 })
 
-
-app.use('/api/user',userRoute)
 app.use('/api/auth',authRoute)
+app.use('/api/user',userRoute)
+app.use('/api/admin',adminRoute)
+
 
 
 
