@@ -28,6 +28,7 @@ function Login() {
           body : JSON.stringify(formData)
       });
       const data=await res.json()
+      console.log(data)
       if(data.success===false){
         dispatch(adminLoginFailure(data))
         return
