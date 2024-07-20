@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInStart, signInFailure, signInSuccess } from '../redux/user/userSlice';
 import OAuth from '../components/OAuth';
-import './SignIn.css'; // Make sure to create this CSS file
+import './SignIn.css'; 
 
 function SignIn() {
   const [formData, setFormData] = useState({});
@@ -73,7 +73,7 @@ function SignIn() {
             <span className='text-blue-600'>Sign Up</span>
           </Link>
         </div>
-        <p className='text-red-800'>{error ? error.message || 'Something went wrong' : ''}</p>
+        <p className='text-red-800 text-center'>{error ? error.message || 'Something went wrong' : ''}</p> 
       </div>
     </div>
   );

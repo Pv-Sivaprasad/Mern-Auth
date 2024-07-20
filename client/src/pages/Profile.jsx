@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux'
 import { useEffect, useRef, useState } from 'react'
 import { getDownloadURL, getStorage, ref, uploadBytesResumable, } from 'firebase/storage';
 import { app } from '../firebase'
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateUserFailure, updateUserSuccess, updateUserStart,
    deleteUserStart, deleteUserFailure, deleteUserSuccess,signOut } from '../redux/user/userSlice';
@@ -18,6 +19,7 @@ function Profile() {
   const [imageError, setImageError] = useState(false);
   const [formData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false)
+  const navigate=useNavigate()
 
   const { currentUser, loading, error } = useSelector(state => state.user)
   useEffect(() => {
@@ -26,6 +28,19 @@ function Profile() {
     }
   }, [image])
 
+
+// useEffect(()=>{
+//   fetch ('/api/user/checkuser')
+//   .then((res)=>res.json())
+//   .then((data)=>{
+//       if(!data.success){
+//         dispatch(signOut());
+//         navigate('/sign-in')
+//       }
+//   })
+// })
+
+  
   const handleFileUpload = async (image) => {
 
     const storage = getStorage(app)
@@ -55,8 +70,9 @@ function Profile() {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-
-
+ 
+  
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();

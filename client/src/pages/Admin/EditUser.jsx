@@ -4,6 +4,49 @@ import { useEffect,useState } from 'react'
 
 
 const EditUser = () => {
+
+const navigate=useNavigate()
+const [userName,setUserName]=useState()
+const [email,setEmail]=useState('')
+const [err,setErr]=useState('')
+const [changePassword,setChangePassword]=useState(false)
+const [password,setPassword]=useState('')
+const {id} = useParams()
+
+
+
+const handleSubmit=async(e)=>{
+  e.preventDefault()
+  if(userName.trim()===''){
+    return setErr('Username cannot be empty')
+  }
+  if(email.trim()===''){
+    return setErr('Email cannot be empty')
+  }
+  if(changePassword && password.trim()===''){
+    return setErr('Password cannot be empty')
+  }
+  const res=await fetch('/api/admin/edituser',{
+    method:'POST',
+    headers :{
+      'Content-Type' : 'application/json'
+    },
+    body : JSON.stringify({id,userName,email,password})
+  });
+  const data =res.json()
+  if(data.success===false){
+    setErr(data.message)
+  }
+  navigate('/admin/dashboard')
+ 
+}
+
+const handleClick=(e)=>{
+  e.preventDefault()
+  navigate('/admin/dashboard')
+}
+
+
     return (
         <div className="h-screen overflow-hidden bg-gradient-to-r from-blue-100 to-pink-100 bg-cover bg-no-repeat">
           <div className="p-3 max-w-lg mx-auto ">

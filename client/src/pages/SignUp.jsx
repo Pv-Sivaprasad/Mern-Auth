@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import OAuth from '../components/OAuth';
-import './SignUp.css'; // Import your SignUp.css file
+import './SignUp.css'; 
 
 function SignUp() {
   const [formdata, setFormData] = useState({});

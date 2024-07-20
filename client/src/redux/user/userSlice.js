@@ -16,7 +16,7 @@ const userSlice = createSlice({
             state.loading = true
 
         },
-
+  
         signInSuccess: (state, action) => {
             state.currentUser = action.payload;
             state.loading = false;
@@ -50,7 +50,7 @@ const userSlice = createSlice({
         deleteUserFailure: (state, action) => {
             state.loading = false;
             state.error = action.payload
-        },
+        },  
         signOut : (state)=>{
             state.currentUser=null;
             state.loading=false;

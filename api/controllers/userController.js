@@ -3,16 +3,6 @@ import { errorHandler } from "../utils/error.js"
 import bcryptjs from 'bcryptjs'
 
 
-
-
-
-
-export const test=(req,res)=>{
-    res.json({
-        'mesage':'Api working'
-    })
-}  
-
 //updating the user
 
 export const updateUser=async(req,res,next)=>{
@@ -63,3 +53,17 @@ if(req.user.id !== req.params.id) return next(errorHandler(401,'You can update y
     }
 
   }
+
+export const checkUser=async(req,res,next)=>{
+    const id=req.user;
+    try {
+        const valideUser=await User.findById(id)
+        if(valideUser){
+            res.status(200).json({status:true,message:'User valid'})
+        }else{
+            res.status(404).json({status:false,message:'user not found'})
+        }
+    } catch (error) {
+        res.status(500).json({staus:false,message:"Server error",error})
+    }
+}
