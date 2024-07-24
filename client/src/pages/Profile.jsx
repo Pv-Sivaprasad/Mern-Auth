@@ -29,16 +29,7 @@ function Profile() {
   }, [image])
 
 
-// useEffect(()=>{
-//   fetch ('/api/user/checkuser')
-//   .then((res)=>res.json())
-//   .then((data)=>{
-//       if(!data.success){
-//         dispatch(signOut());
-//         navigate('/sign-in')
-//       }
-//   })
-// })
+
 
   
   const handleFileUpload = async (image) => {

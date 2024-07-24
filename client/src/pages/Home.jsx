@@ -1,8 +1,21 @@
 import React from 'react';
 import './Home.css';
 import './Global.css';
+import { useEffect } from 'react';
+
 
 function Home() {
+
+  useEffect(()=>{
+    fetch('/api/user/checkuser')
+    .then((res) => res.json())
+    .then((data)=>{      
+      if(!data.status){        
+        dispatch(signOut());
+        navigate("/");
+      }
+    })
+  });
   return (
     <div className='home-background'>
       <video autoPlay loop muted className='video-background'>

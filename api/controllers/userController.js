@@ -58,6 +58,7 @@ export const checkUser=async(req,res,next)=>{
     const id=req.user;
     try {
         const valideUser=await User.findById(id)
+        console.log('validuser',valideUser);
         if(valideUser){
             res.status(200).json({status:true,message:'User valid'})
         }else{
